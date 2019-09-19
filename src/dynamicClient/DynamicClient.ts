@@ -35,7 +35,7 @@ class DynamicClient implements PkCore.IDynamicClient {
       this.registryClient
         .getRegistryEntriesByName(name)
         .then((response) => {
-          const client = new HttpClient(response.url, 10000);
+          const client = new HttpClient(response.url, 300000);
           resolve(client);
         })
         .catch((err) => {

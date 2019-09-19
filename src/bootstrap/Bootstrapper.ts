@@ -46,6 +46,8 @@ export class Bootstrapper implements PkCore.IBootstrapper {
       }
       return <PkCore.IBootstrapperSignConfig>{ registryId: registryCall.id, isRegistered: true };
     } catch (err) {
+      Log.log(err, LogLevel.error);
+      process.exit(1);
       throw new Error(err);
     }
   }

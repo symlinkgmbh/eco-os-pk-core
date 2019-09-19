@@ -125,6 +125,6 @@ export class EcoRegistryClient implements PkCore.IEcoRegistryClient {
   }
 
   private async resolveClient(): Promise<HttpClient> {
-    return await new HttpClient(this.uri, 10000);
+    return await new HttpClient(this.uri, 300000);
   }
 }

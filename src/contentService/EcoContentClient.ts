@@ -35,7 +35,12 @@ export class EcoContentClient implements PkCore.IEcoContentClient {
     return await client.getClient().get(`/content/${encodeURIComponent(checksum)}`);
   }
 
-  public async createContent(req: MsContent.IContent): Promise<AxiosResponse> {
+  public async loadContentFromFederation(checksum: string): Promise<AxiosResponse> {
+    const client = await this.dynamicClient.getClient("eco-os-content-service");
+    return await client.getClient().get(`/content/federation/${encodeURIComponent(checksum)}`);
+  }
+
+  public async createContent(req: MsContent.IContent | Array<MsContent.IContent>): Promise<AxiosResponse> {
     const client = await this.dynamicClient.getClient("eco-os-content-service");
     return await client.getClient().post("/content", req);
   }
@@ -43,5 +48,12 @@ export class EcoContentClient implements PkCore.IEcoContentClient {
   public async revokeOutdatedContent(): Promise<AxiosResponse> {
     const client = await this.dynamicClient.getClient("eco-os-content-service");
     return await client.getClient().delete("/content");
+  }
+
+  public async createContentFromFederation(
+    req: MsContent.IContent | Array<MsContent.IContent>,
+  ): Promise<AxiosResponse> {
+    const client = await this.dynamicClient.getClient("eco-os-content-service");
+    return await client.getClient().post("/content/federation", req);
   }
 }

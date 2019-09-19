@@ -17,7 +17,7 @@
 
 
 
-import { PkCore } from "@symlinkde/eco-os-pk-models";
+import { PkCore, MsContent } from "@symlinkde/eco-os-pk-models";
 import { dynamicClientContainer } from "../dynamicClient";
 import { ECO_OS_PK_CORE_TYPES } from "..";
 import { AxiosResponse } from "axios";
@@ -43,5 +43,35 @@ export class EcoFederationClient implements PkCore.IEcoFederationClient {
   public async getUserKeys(email: string, domain: string): Promise<AxiosResponse> {
     const client = await this.dynamicClient.getClient("eco-os-federation-service");
     return await client.getClient().post("/federation/user", { email, domain });
+  }
+
+  public async initFederation(domain: string): Promise<AxiosResponse> {
+    const client = await this.dynamicClient.getClient("eco-os-federation-service");
+    return await client.getClient().post("/federation/init", { domain });
+  }
+
+  public async postRemoteContent(content: MsContent.IContent): Promise<AxiosResponse> {
+    const client = await this.dynamicClient.getClient("eco-os-federation-service");
+    return await client.getClient().post("/federation/content", content);
+  }
+
+  public async receiveRemoteContent(content: MsContent.IContent): Promise<AxiosResponse> {
+    const client = await this.dynamicClient.getClient("eco-os-federation-service");
+    return await client.getClient().post("/federation/remote/content", content);
+  }
+
+  public async postRemoteContentAsCommunity(content: MsContent.IContent): Promise<AxiosResponse> {
+    const client = await this.dynamicClient.getClient("eco-os-federation-service");
+    return await client.getClient().post("/federation/content/community", content);
+  }
+
+  public async getRemoteContent(checksum: string, domain: string): Promise<AxiosResponse> {
+    const client = await this.dynamicClient.getClient("eco-os-federation-service");
+    return await client.getClient().post("/federation/content/request", { checksum, domain });
+  }
+
+  public async deliverRemoteContent(checksum: string, domain: string): Promise<AxiosResponse> {
+    const client = await this.dynamicClient.getClient("eco-os-federation-service");
+    return await client.getClient().post("/federation/remote/deliver", { checksum, domain });
   }
 }

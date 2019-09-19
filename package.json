@@ -1,6 +1,6 @@
 {
   "name": "@symlinkde/eco-os-pk-core",
-  "version": "0.0.134",
+  "version": "0.0.148",
   "description": "Package containing all core functions.",
   "types": "lib/index.d.ts",
   "main": "lib/index.js",
@@ -45,5 +45,5 @@
   },
   "company": "Symlink GmbH",
   "homepage": "https://2ndlock.com",
-  "repository": "https://gitlab.com"
+  "repository": "https://gitlab.com/symlinkde"
 }
