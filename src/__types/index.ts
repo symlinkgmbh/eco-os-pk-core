@@ -34,6 +34,7 @@ const ECO_OS_PK_CORE_TYPES = {
   IEcoMetricsClient: Symbol.for("IEcoMetricsClient"),
   IEcoLicenseClient: Symbol.for("IEcoLicenseClient"),
   IEcoFederationClient: Symbol.for("IEcoFederationClient"),
+  IEcoFederationKeyClient: Symbol.for("IEcoFederationKeyClient"),
 };
 
 export { ECO_OS_PK_CORE_TYPES };

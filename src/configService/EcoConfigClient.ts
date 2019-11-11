@@ -59,4 +59,14 @@ export class EcoConfigClient implements PkCore.IEcoConfigClient {
     const client = await this.dynamicClient.getClient("eco-os-service-config");
     return await client.getClient().delete(`/config`);
   }
+
+  public async getRunningConfig(): Promise<AxiosResponse> {
+    const client = await this.dynamicClient.getClient("eco-os-service-config");
+    return await client.getClient().get(`/services/config`);
+  }
+
+  public async getRunningConfigFromSingleService(name: string): Promise<AxiosResponse> {
+    const client = await this.dynamicClient.getClient("eco-os-service-config");
+    return await client.getClient().get(`/services/config/${name}`);
+  }
 }

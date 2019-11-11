@@ -34,6 +34,7 @@ import { EcoQueueClient } from "./queueService";
 import { EcoMetricsClient } from "./metricsService/EcoMetricsClient";
 import { EcoLicenseClient } from "./licenseService/EcoLicenseClient";
 import { EcoFederationClient } from "./federationService";
+import { EcoFederationKeyClient } from "./federationKeyService";
 
 const serviceContainer = new Container();
 
@@ -121,5 +122,11 @@ serviceContainer
   .bind<PkCore.IEcoFederationClient>(ECO_OS_PK_CORE_TYPES.IEcoFederationClient)
   .toDynamicValue((context: interfaces.Context) => {
     return new EcoFederationClient(context.container.get("SECONDLOCK_REGISTRY_URI"));
+  });
+
+serviceContainer
+  .bind<PkCore.IEcoFederationKeyClient>(ECO_OS_PK_CORE_TYPES.IEcoFederationKeyClient)
+  .toDynamicValue((context: interfaces.Context) => {
+    return new EcoFederationKeyClient(context.container.get("SECONDLOCK_REGISTRY_URI"));
   });
 export { serviceContainer };

@@ -17,7 +17,7 @@
 
 
 
-import { PkCore, MsContent } from "@symlinkde/eco-os-pk-models";
+import { PkCore, MsFederation } from "@symlinkde/eco-os-pk-models";
 import { dynamicClientContainer } from "../dynamicClient";
 import { ECO_OS_PK_CORE_TYPES } from "..";
 import { AxiosResponse } from "axios";
@@ -50,17 +50,17 @@ export class EcoFederationClient implements PkCore.IEcoFederationClient {
     return await client.getClient().post("/federation/init", { domain });
   }
 
-  public async postRemoteContent(content: MsContent.IContent): Promise<AxiosResponse> {
+  public async postRemoteContent(content: MsFederation.IFederationPostObject): Promise<AxiosResponse> {
     const client = await this.dynamicClient.getClient("eco-os-federation-service");
     return await client.getClient().post("/federation/content", content);
   }
 
-  public async receiveRemoteContent(content: MsContent.IContent): Promise<AxiosResponse> {
+  public async receiveRemoteContent(content: MsFederation.IFederationPostObject): Promise<AxiosResponse> {
     const client = await this.dynamicClient.getClient("eco-os-federation-service");
     return await client.getClient().post("/federation/remote/content", content);
   }
 
-  public async postRemoteContentAsCommunity(content: MsContent.IContent): Promise<AxiosResponse> {
+  public async postRemoteContentAsCommunity(content: MsFederation.IFederationPostObject): Promise<AxiosResponse> {
     const client = await this.dynamicClient.getClient("eco-os-federation-service");
     return await client.getClient().post("/federation/content/community", content);
   }

@@ -103,7 +103,7 @@ export class Bootstrapper implements PkCore.IBootstrapper {
       } catch (err) {
         Log.log(err, LogLevel.error);
       }
-    }, 10000);
+    }, 5000);
   }
 
   private removeFromRegistry(): void {

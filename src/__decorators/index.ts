@@ -31,3 +31,4 @@ export { injectQueueClient } from "./EcoQueueClientDecorator";
 export { injectMetricClient } from "./EcoMetricClientDecorator";
 export { injectLicenseClient } from "./EcoLicenseClientDecorator";
 export { injectFederationClient } from "./EcoFederationClientDerocator";
+export { injectFederationKeyClient } from "./EcoFederationKeyClientDecorator";
