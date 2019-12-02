@@ -21,6 +21,7 @@ import { dynamicClientContainer } from "../dynamicClient/index";
 import { PkCore, MsUser } from "@symlinkde/eco-os-pk-models";
 import { ECO_OS_PK_CORE_TYPES } from "../__types";
 import { AxiosResponse } from "axios";
+import { IApiKey } from "@symlinkde/eco-os-pk-models/lib/models/services/ms_user/IApiKey";
 
 export class EcoUserClient implements PkCore.IEcoUserClient {
   private dynamicClient: PkCore.IDynamicClient;
@@ -125,7 +126,7 @@ export class EcoUserClient implements PkCore.IEcoUserClient {
     return await client.getClient().get(`/validation/delete/${id}`);
   }
 
-  public async addKeyToUser(id: string, apiKey: string): Promise<AxiosResponse> {
+  public async addKeyToUser(id: string, apiKey: IApiKey): Promise<AxiosResponse> {
     const client = await this.dynamicClient.getClient("eco-os-user-service");
     return await client.getClient().post("/apikeys", {
       id,
