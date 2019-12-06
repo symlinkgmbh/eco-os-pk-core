@@ -1,6 +1,6 @@
 {
   "name": "@symlinkde/eco-os-pk-core",
-  "version": "0.0.157",
+  "version": "0.0.158",
   "description": "Package containing all core functions.",
   "types": "lib/index.d.ts",
   "main": "lib/index.js",

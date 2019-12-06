@@ -151,4 +151,49 @@ export class EcoUserClient implements PkCore.IEcoUserClient {
     const client = await this.dynamicClient.getClient("eco-os-user-service");
     return await client.getClient().delete(`/apikeys/delete/all/${id}`);
   }
+
+  public async addKey(key: MsUser.IApikeyGroup): Promise<AxiosResponse> {
+    const client = await this.dynamicClient.getClient("eco-os-user-service");
+    return await client.getClient().post(`/keygroups`, key);
+  }
+
+  public async addMembers(id: string, members: Array<string>): Promise<AxiosResponse> {
+    const client = await this.dynamicClient.getClient("eco-os-user-service");
+    return await client.getClient().post(`/keygroups/member`, { id, members });
+  }
+
+  public async addDomains(id: string, domains: Array<string>): Promise<AxiosResponse> {
+    const client = await this.dynamicClient.getClient("eco-os-user-service");
+    return await client.getClient().post(`/keygroups/domain"`, { id, domains });
+  }
+
+  public async getGroupById(id: string): Promise<AxiosResponse> {
+    const client = await this.dynamicClient.getClient("eco-os-user-service");
+    return await client.getClient().get(`/keygroups/${id}`);
+  }
+
+  public async getAllGroups(): Promise<AxiosResponse> {
+    const client = await this.dynamicClient.getClient("eco-os-user-service");
+    return await client.getClient().get(`/keygroups`);
+  }
+
+  public async loadGroupByApikey(key: string): Promise<AxiosResponse> {
+    const client = await this.dynamicClient.getClient("eco-os-user-service");
+    return await client.getClient().get(`/keygroups/group/${key}`);
+  }
+
+  public async deleteMember(id: string, member: string): Promise<AxiosResponse> {
+    const client = await this.dynamicClient.getClient("eco-os-user-service");
+    return await client.getClient().post(`/keygroups/delete/member`, { id, member });
+  }
+
+  public async deleteDomain(id: string, domain: string): Promise<AxiosResponse> {
+    const client = await this.dynamicClient.getClient("eco-os-user-service");
+    return await client.getClient().post(`/keygroups/delete/domain`, { id, domain });
+  }
+
+  public async deleteKey(id: string): Promise<AxiosResponse> {
+    const client = await this.dynamicClient.getClient("eco-os-user-service");
+    return await client.getClient().delete(`/keygroups/${id}`);
+  }
 }
