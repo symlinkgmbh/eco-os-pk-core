@@ -164,7 +164,7 @@ export class EcoUserClient implements PkCore.IEcoUserClient {
 
   public async addDomains(id: string, domains: Array<string>): Promise<AxiosResponse> {
     const client = await this.dynamicClient.getClient("eco-os-user-service");
-    return await client.getClient().post(`/keygroups/domain"`, { id, domains });
+    return await client.getClient().post(`/keygroups/domain`, { id, domains });
   }
 
   public async getGroupById(id: string): Promise<AxiosResponse> {
