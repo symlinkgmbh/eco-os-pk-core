@@ -39,7 +39,7 @@
   "dependencies": {
     "@symlinkde/eco-os-pk-http": "^0.0.*",
     "@symlinkde/eco-os-pk-log": "^0.0.*",
-    "axios": "0.19.0",
+    "axios": "1.6.0",
     "inversify": "5.0.1",
     "reflect-metadata": "0.1.13"
   },
